@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能阅读助手</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // 设置 PDF.js 工作路径
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 加载状态提示 -->
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p class="loading-text">正在解析文件...</p>
+        </div>
+        <!-- 主要内容区域 -->
+        <main class="content">
+            <!-- 左侧文本显示区域 -->
+            <section class="text-container">
+                <div class="text-title">原文摘录</div>
+                <!-- 文件上传区域 -->
+                <div id="uploadArea" class="upload-area">
+                    <div class="file-upload">
+                        <input type="file" id="fileInput" accept=".txt,.pdf" />
+                        <label for="fileInput" class="upload-btn">点击或拖拽文件上传</label>
+                    </div>
+                    <p class="upload-hint">支持的文件类型：图片、文档、表格、PPT等，最多10个，每个最大20M</p>
+                    <div class="file-count">文件数量：<span>0/10</span></div>
+                </div>
+                <div id="textContent" class="text-content"></div>
+            </section>
+
+            <!-- 右侧知识点展示区域 -->
+            <section class="knowledge-container">
+                <div class="text-title">解析结果</div>
+                <div id="knowledgeCards" class="knowledge-cards">
+                    <!-- 知识卡片将通过 JavaScript 动态添加 -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

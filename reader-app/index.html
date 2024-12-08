@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能阅读助手</title>
+    <link rel="stylesheet" href="styles.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="config.js"></script>
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <script defer src="script.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p class="loading-text">正在解析文件...</p>
+        </div>
+        <div class="toolbar">
+            <button class="mode-btn reading-mode-btn" aria-label="切换阅读模式">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M21,5c-1.11-0.35-2.33-0.5-3.5-0.5c-1.95,0-4.05,0.4-5.5,1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45,4.9,1,6v14.65 c0,0.25,0.25,0.5,0.5,0.5c0.1,0,0.15-0.05,0.25-0.05C3.1,20.45,5.05,20,6.5,20c1.95,0,4.05,0.4,5.5,1.5c1.35-0.85,3.8-1.5,5.5-1.5 c1.65,0,3.35,0.3,4.75,1.05c0.1,0.05,0.15,0.05,0.25,0.05c0.25,0,0.5-0.25,0.5-0.5V6C22.4,5.55,21.75,5.25,21,5z M21,18.5 c-1.1-0.35-2.3-0.5-3.5-0.5c-1.7,0-4.15,0.65-5.5,1.5V8c1.35-0.85,3.8-1.5,5.5-1.5c1.2,0,2.4,0.15,3.5,0.5V18.5z"/>
+                </svg>
+            </button>
+            <button class="mode-btn dark-mode-btn" aria-label="切换深色模式">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36c-0.98,1.37-2.58,2.26-4.4,2.26 c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/>
+                </svg>
+            </button>
+        </div>
+        <main class="content">
+            <section class="text-container">
+                <div class="text-title">原文</div>
+                <div id="uploadArea" class="upload-area">
+                    <div class="file-upload">
+                        <input type="file" id="fileInput" accept=".txt,.pdf" />
+                        <label for="fileInput" class="upload-btn">点击或拖拽文件上传</label>
+                    </div>
+                    <p class="upload-hint">支持的文件类型：图片、文档、表格、PPT等，最多10个，每个最大20M</p>
+                    <div class="file-count">文件数量：<span>0/10</span></div>
+                </div>
+                <div id="textContent" class="text-content"></div>
+            </section>
+
+            <section class="knowledge-container">
+                <div class="text-title">辅助阅读</div>
+                <div class="explanation-types">
+                    <button class="type-btn active" data-type="general">通用解释</button>
+                    <button class="type-btn" data-type="definition">词义解释</button>
+                    <button class="type-btn" data-type="context">背景知识</button>
+                    <button class="type-btn" data-type="translation">中英互译</button>
+                </div>
+                <div id="knowledgeCards" class="knowledge-cards">
+                    <div class="empty-state">
+                        <p>选择文本以查看解释</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

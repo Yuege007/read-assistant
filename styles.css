@@ -1,0 +1,206 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顶部工具栏样式 */
+.toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 1.1rem;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 主要内容区域样式 */
+.content {
+    flex: 1;
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    background-color: #f5f5f5;
+}
+
+/* 左侧文本区域样式 */
+.text-container {
+    flex: 0 0 45%;  /* 固定宽度比例 */
+    padding: 1.5rem;
+    border-right: 1px solid #dee2e6;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: none;  /* 默认隐藏 */
+}
+
+.text-content.active {
+    display: block;  /* 当有内容时显示 */
+}
+
+/* 添加原文标题样式 */
+.text-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* 右侧知识点区域样式 */
+.knowledge-container {
+    flex: 0 0 45%;  /* 固定宽度比例 */
+    padding: 1rem;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+}
+
+.knowledge-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* 知识卡片样式 */
+.knowledge-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.knowledge-card h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.knowledge-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.knowledge-card img {
+    max-width: 100%;
+    height: auto;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+}
+
+/* 加载提示样式 */
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-indicator.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loading-text {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
+
+/* 修改文件上传区域样式 */
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    margin: 2rem auto;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.file-upload {
+    padding: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.upload-hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.file-count {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+} 

@@ -1,0 +1,550 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #e8e6e3;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    padding: 2rem;
+    gap: 3rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 左侧文本区域样式 */
+.text-container {
+    flex: 0 0 45%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    height: calc(100vh - 4rem);
+}
+
+/* 右侧知识点区域样式 */
+.knowledge-container {
+    flex: 0 0 45%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: auto;
+    min-height: calc(100vh - 4rem);
+    overflow-y: visible;
+}
+
+/* 上传区域样式 */
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    margin: 2rem auto;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: #007bff;
+    background-color: #f8f9fa;
+}
+
+.file-upload {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.upload-hint {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.file-count {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* 标题样式 */
+.text-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e1e1e1;
+}
+
+/* 知识卡片样式 */
+.knowledge-card {
+    position: relative;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e1e8f0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+}
+
+.knowledge-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.knowledge-card p {
+    color: #333;
+    line-height: 1.6;
+}
+
+.knowledge-card .selected-text {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e1e8f0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.knowledge-card .explanation {
+    color: #666;
+    line-height: 1.6;
+    margin: 1rem 0;
+    padding: 1.2rem;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    border: 1px solid #eee;
+    height: auto;
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    min-height: unset;
+    max-height: unset;
+    overflow: visible;
+}
+
+.knowledge-card .explanation p {
+    margin: 0 0 0.8rem 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.knowledge-card .explanation p:last-child {
+    margin-bottom: 0;
+}
+
+.knowledge-card .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.delete-btn {
+    padding: 0.3rem 0.8rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.share-btn {
+    padding: 0.3rem 0.8rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.share-btn:hover {
+    background-color: #218838;
+}
+
+/* 加载提示样式 */
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-indicator.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loading-text {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 文本内容样式 */
+.text-content {
+    display: none;
+}
+
+.text-content.active {
+    display: block;
+}
+
+.text-content p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    color: #2c3e50;
+    text-align: justify;
+}
+
+/* 空状态样式 */
+.empty-state {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+    font-size: 1.1rem;
+}
+
+/* 解释类型选择器样式 */
+.explanation-types {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e1e1e1;
+    overflow-x: auto;
+}
+
+.type-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.type-btn:hover {
+    background: #f8f9fa;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.type-btn.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* 知识卡片增强样式 */
+.knowledge-card {
+    position: relative;
+}
+
+.knowledge-card .type-label {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    color: #007bff;
+    background: rgba(0,123,255,0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.knowledge-card .loading {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+}
+
+/* 自定义滚动条样式 */
+.knowledge-card .explanation::-webkit-scrollbar {
+    display: none;
+}
+
+/* 深色模式下的滚动条样式 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --card-bg: #2d2d2d;
+        --border-color: #404040;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    .knowledge-card {
+        background-color: var(--card-bg);
+        border-color: var(--border-color);
+    }
+
+    .knowledge-card .explanation {
+        scrollbar-color: #4a9eff #2d2d2d;
+    }
+    
+    .knowledge-card .explanation::-webkit-scrollbar-track {
+        background: #2d2d2d;
+    }
+    
+    .knowledge-card .explanation::-webkit-scrollbar-thumb {
+        background-color: #4a9eff;
+    }
+}
+
+/* 响应调整 */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .text-container,
+    .knowledge-container {
+        flex: 1 1 100%;
+        max-height: 50vh;
+    }
+
+    .knowledge-card {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .knowledge-card .explanation {
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+        height: auto;
+        max-height: none !important;
+    }
+}
+
+/* 添加加载动画 */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 添加错误提示样式 */
+.error-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #dc3545;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* 添加卡片动画 */
+.knowledge-card {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 工具栏样式 */
+.toolbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.mode-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.mode-btn.active {
+    background: #007bff;
+    color: white;
+}
+
+/* 阅读模式样式 */
+body.reading-mode {
+    background-color: #f4f4e8;
+}
+
+body.reading-mode .text-container,
+body.reading-mode .knowledge-container {
+    background-color: #f8f8f2;
+}
+
+body.reading-mode .knowledge-card {
+    background-color: #f4f4e8;
+}
+
+body.reading-mode .knowledge-card .explanation {
+    background-color: #f8f8f2;
+    color: #3c3c3c;
+}
+
+/* 深色模式样式 */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .text-container,
+body.dark-mode .knowledge-container {
+    background-color: #2d2d2d;
+    border-color: #404040;
+}
+
+body.dark-mode .knowledge-card {
+    background-color: #333;
+    border-color: #404040;
+}
+
+body.dark-mode .knowledge-card .explanation {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #404040;
+}
+
+body.dark-mode .mode-btn {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .mode-btn.active {
+    background-color: #007bff;
+} 
